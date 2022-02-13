@@ -15,6 +15,7 @@ def new_game():  # Creates a new quiz game
 
         correct_guesses += check_answer(questions.get(key), guess) # Check guess with answer key, give 1 point if correct
         question_num += 1
+    display_score(correct_guesses, guesses)
 # --------------------
 def check_answer(answer, guess):
     if answer == guess:
@@ -24,7 +25,24 @@ def check_answer(answer, guess):
         print("WRONG!")
         return 0
 # --------------------
+def display_score(correct_guesses, guesses):
+    print("---------------------")
+    print("RESULTS")
+    print("---------------------")
 
+    print("Answers: ", end=" ") # Display all correct answers
+    for i in questions:
+        print(questions.get(i), end=" ")
+    print()
+
+    print("Guesses: ", end="") # Display guesses made by player
+    for i in guesses:
+        print(i, end=" ")
+    print()
+
+    score = (correct_guesses / len(questions)) * 100 # Score as a percentage
+    print("Your score is: " + str(score) + "%")
+# --------------------
 questions = { # A dictionary works to hold a question:answer pair (key:value)
     "Who created Python?": "A",
     "What year was Python created?": "B",
