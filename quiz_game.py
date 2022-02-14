@@ -43,6 +43,16 @@ def display_score(correct_guesses, guesses):
     score = (correct_guesses / len(questions)) * 100 # Score as a percentage
     print("Your score is: " + str(score) + "%")
 # --------------------
+def play_again(): # If player wants to play again
+    response = input("Do you want to play again? (yes or no): ")
+    response = response.upper()
+
+    if response == 'YES':
+        return True # True, so we stay in the while loop
+    else:
+        return False # False, so we break out of the while loop
+# --------------------
+
 questions = { # A dictionary works to hold a question:answer pair (key:value)
     "Who created Python?": "A",
     "What year was Python created?": "B",
@@ -57,5 +67,8 @@ options = [["A. Guido van Rossum", "B. Elon Musk", "C. Bill Gates", "D. Mark Zuc
           ["A. True","B. False", "C. sometimes", "D. What's Earth?"]]
 
 new_game()
+
+while play_again() == True: # If play_again returns back true, start another quiz game
+    new_game()
 
 print("Bye!")
